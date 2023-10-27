@@ -1,0 +1,17 @@
+<IfModule authz_core_module>
+    Require all denied
+</IfModule>
+<IfModule !authz_core_module>
+    Deny from all
+</IfModule>
+
+<VirtualHost *:80>
+	ServerName tasksapp.localhost
+	DocumentRoot "http://localhost/proyecto/taskapp/public/"
+
+	<Directory "http://localhost/proyecto/taskapp/public/">
+		Require all granted
+		AllowOverride All
+	</Directory>
+
+</VirtualHost>	
